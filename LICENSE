@@ -1,0 +1,98 @@
+Business Source License 1.1
+
+License text copyright (c) 2017 MariaDB Corporation Ab, All Rights Reserved.
+"Business Source License" is a trademark of MariaDB Corporation Ab.
+
+-----------------------------------------------------------------------------
+
+Business Source License 1.1
+
+Terms
+
+The Licensor hereby grants you the right to copy, modify, create derivative
+works, use, and/or distribute copies of the Licensed Work, if and only if the
+use of the Licensed Work does not involve providing commercial products or
+services that compete with the products or services of Licensor, and the
+use of the Licensed Work is otherwise in accordance with the Licensed Work.
+
+Subject to the foregoing, you may use the Licensed Work under the terms of the
+Business Source License, or the GNU General Public License, version 2, or any
+later version, or the GNU Lesser General Public License, version 2.1, or any
+later version.
+
+Change Date: 2025-01-01
+
+Change License: GNU General Public License, version 2, or any later version
+
+On the date specified in the Change Date above, or in the case of the
+Licensor's failure to specify a Change Date, then Change Date shall be the
+date that is four (4) years after the date of first distribution of the
+Licensed Work by the Licensor, or if the Licensed Work is distributed under
+multiple licenses, the Change Date shall be the date of first distribution of
+the Licensed Work under this Business Source License.
+
+-----------------------------------------------------------------------------
+
+Copyright (c) 2025 Esraderey and Raul Cruz Acosta
+
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-----------------------------------------------------------------------------
+
+BUSL 1.1 Additional Terms
+
+1. Commercial Use Restriction: The Licensed Work may not be used for commercial
+   purposes that compete with the Licensor's business, including but not limited
+   to providing competing products or services.
+
+2. Attribution: You must retain all copyright notices and attribution to the
+   original authors (Esraderey and Raul Cruz Acosta) in all copies of the
+   Licensed Work.
+
+3. Patent Grant: Subject to the terms and conditions of this license, each
+   contributor hereby grants to you a perpetual, worldwide, non-exclusive,
+   no-charge, royalty-free, irrevocable patent license to make, have made, use,
+   offer to sell, sell, import, and otherwise transfer the Licensed Work.
+
+4. Termination: This license and the rights granted hereunder will terminate
+   automatically if you fail to comply with terms herein and fail to cure such
+   breach within 30 days of becoming aware of the breach.
+
+5. No Warranty: THE LICENSED WORK IS PROVIDED ON AN "AS IS" BASIS, WITHOUT
+   WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+   WITHOUT LIMITATION, ANY WARRANTIES OR CONDITIONS OF TITLE, NON-INFRINGEMENT,
+   MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
+
+6. Limitation of Liability: IN NO EVENT AND UNDER NO LEGAL THEORY, WHETHER IN
+   TORT (INCLUDING NEGLIGENCE), CONTRACT, OR OTHERWISE, UNLESS REQUIRED BY
+   APPLICABLE LAW OR AGREED TO IN WRITING, SHALL ANY CONTRIBUTOR BE LIABLE TO
+   YOU FOR DAMAGES, INCLUDING ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR
+   CONSEQUENTIAL DAMAGES OF ANY CHARACTER ARISING AS A RESULT OF THIS LICENSE
+   OR OUT OF THE USE OR INABILITY TO USE THE LICENSED WORK.
+
+-----------------------------------------------------------------------------
+
+For questions about this license, please contact:
+- Esraderey
+- Raul Cruz Acosta
+- Email: mneme@yourdomain.com
+
+This license is effective as of January 1, 2025.

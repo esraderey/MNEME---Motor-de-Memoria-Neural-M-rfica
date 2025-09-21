@@ -1,0 +1,47 @@
+# MNEME - Motor de Memoria Neural Mórfica
+# Dependencias principales
+
+# Core dependencies
+torch>=2.0.0
+numpy>=1.20.0
+scipy>=1.7.0
+
+# Tensor decomposition
+tensorly>=0.7.0
+
+# Compression
+lz4>=3.0.0
+
+# Hashing
+xxhash>=2.0.0
+
+# System monitoring
+psutil>=5.8.0
+
+# Machine learning utilities
+scikit-learn>=1.0.0
+
+# Security and cryptography
+cryptography>=3.0.0
+pycryptodome>=3.10.0
+
+# Performance optimization
+numba>=0.50.0
+
+# Development and testing
+pytest>=6.0.0
+pytest-cov>=2.0.0
+black>=21.0.0
+flake8>=3.8.0
+mypy>=0.800.0
+
+# Optional GPU support
+# cupy>=9.0.0  # Uncomment for GPU acceleration
+# nvidia-ml-py3>=7.0.0  # Uncomment for NVIDIA GPU monitoring
+
+# Optional optimization
+# cython>=0.29.0  # Uncomment for Cython optimization
+
+# Documentation
+# sphinx>=4.0.0  # Uncomment for documentation generation
+# sphinx-rtd-theme>=0.5.0  # Uncomment for RTD theme
