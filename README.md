@@ -385,7 +385,8 @@ Business Source License 1.1 (BUSL-1.1) – ver [LICENSE](LICENSE)
 - **Issues**: [GitHub Issues](https://github.com/yourusername/mneme/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/mneme/discussions)
 - **Email**: msc.framework@gmail.com
-- **Documentación**: [Wiki](https://github.com/yourusername/mneme/wiki)
+- **Documentación**: [Wiki]
+https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica
 
 ## 🏆 Reconocimientos
 
