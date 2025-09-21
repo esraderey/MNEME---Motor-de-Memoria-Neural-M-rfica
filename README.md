@@ -355,16 +355,12 @@ report = optimizer.get_optimization_report()
   title = {MNEME: Motor de Memoria Neural Mórfica},
   author = {Esraderey and Raul Cruz Acosta},
   year = {2025},
-  url = {https://github.com/yourusername/mneme},
+  url = https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica,
   note = {Sistema avanzado de memoria computacional con síntesis determinista}
 }
 ```
 
 ## 🔗 Proyectos Relacionados
-
-- **SRPK** - Compresión de kernels
-- **CCD/CCDMO** - Descomposición de tensores
-- **TAEC** - Aceleración de cómputo
 - **TensorLy** - Descomposición de tensores
 - **PyTorch** - Framework de deep learning
 
