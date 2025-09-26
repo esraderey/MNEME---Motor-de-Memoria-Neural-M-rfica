@@ -3,8 +3,8 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![License: BUSL-1.1](https://img.shields.io/badge/License-BUSL--1.1-blue.svg)](https://opensource.org/licenses/BUSL-1.1)
-[![Security](https://img.shields.io/badge/Security-Enterprise-green.svg)](https://github.com/yourusername/mneme)
-[![Performance](https://img.shields.io/badge/Performance-Optimized-orange.svg)](https://github.com/yourusername/mneme)
+[![Security](https://img.shields.io/badge/Security-Enterprise-green.svg)](https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica)
+[![Performance](https://img.shields.io/badge/Performance-Optimized-orange.svg)](https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica)
 
 **MNEME** (pronunciado *"neme"*) redefine la memoria computacional mediante un motor neural inspirado en estructuras biológicas.  
 En lugar de almacenar datos en ubicaciones fijas, **MNEME guarda descriptores compactos y generativos** que reconstruyen el contenido de forma determinista, como si fueran recuerdos que emergen bajo demanda.
@@ -41,29 +41,47 @@ tensor = mneme.synthesize(descriptor)  # Reconstrucción determinista
 
 🔹 **10–100x reducción de memoria** para modelos ML, imágenes y estados de simulación
 
-🔹 **Síntesis determinista** – mismo descriptor, mismo resultado
+🔹 **Síntesis determinista** – mismo descriptor, mismo resultado garantizado
 
-🔹 **Verificación criptográfica** – pruebas de integridad en cada operación
+🔹 **Verificación criptográfica de extremo a extremo** – autenticidad e integridad con firmado HMAC en cada operación
 
-🔹 **Control de versiones incorporado** – seguimiento con árboles de Merkle
+🔹 **Control de versiones optimizado** – seguimiento eficiente con cadenas de deltas y consolidación automática
 
 🔹 **Eficiencia energética** – minimiza el movimiento de datos siguiendo el principio de Landauer
 
-🔹 **Seguridad empresarial** – auditoría completa y control de acceso
+🔹 **Seguridad empresarial** – firmado HMAC, checksums robustos y arquitectura segura por defecto
 
-🔹 **Optimización automática** – gestión inteligente de memoria y rendimiento
+🔹 **Optimización automática** – gestión inteligente de memoria (CPU/GPU) y rendimiento sostenido
 
 ## 📊 Métricas de Rendimiento
 
 | Métrica | Rendimiento |
 |---------|-------------|
 | Ratio de compresión | 10–20x en transformadores |
-| Latencia de síntesis | <150μs (256KB tiles) |
-| Latencia de caché | <1μs |
+| Latencia de síntesis | <150μs (tiles de 256KB) |
+| Latencia de caché (CPU) | <1μs |
 | Pérdida de calidad | <1% en inferencia ML |
-| Ahorro de memoria | 90–95% en modelos grandes |
-| Verificación criptográfica | <10μs por operación |
+| Ahorro de memoria VRAM | >90% con caché en CPU |
+| Verificación HMAC | <10μs por operación |
 | Throughput paralelo | 8x aceleración con 8 cores |
+
+<details>
+<summary><b>📊 Exportar a Hojas de cálculo</b></summary>
+
+Puedes copiar la siguiente tabla para importar en Excel, Google Sheets o cualquier aplicación de hojas de cálculo:
+
+```
+Métrica	Rendimiento
+Ratio de compresión	10–20x en transformadores
+Latencia de síntesis	<150μs (tiles de 256KB)
+Latencia de caché (CPU)	<1μs
+Pérdida de calidad	<1% en inferencia ML
+Ahorro de memoria VRAM	>90% con caché en CPU
+Verificación HMAC	<10μs por operación
+Throughput paralelo	8x aceleración con 8 cores
+```
+
+</details>
 
 ## 🛠️ Instalación
 
@@ -83,8 +101,8 @@ pip install mneme
 ### Instalación completa con todas las funcionalidades
 
 ```bash
-git clone https://github.com/yourusername/mneme.git
-cd mneme
+git clone https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica.git
+cd MNEME---Motor-de-Memoria-Neural-M-rfica
 pip install -r requirements.txt
 pip install -e .[all]
 ```
@@ -107,26 +125,28 @@ pip install -e .[optimization]
 
 ## 🚦 Uso Rápido
 
-### Guardar y recuperar tensores
+### Guardar y recuperar con configuración centralizada
 
 ```python
 import torch
-from mneme_core import ZSpace
+import secrets
+from mneme_core import ZSpace, MnemeConfig, CompressionLevel
 
-# Inicializar con configuración avanzada
-mneme = ZSpace(
-    cache_size=1 << 30,  # 1GB
+# 1. Configurar el motor de forma centralizada
+config = MnemeConfig(
+    cache_size_bytes=1 << 30,  # 1GB
     compression_level=CompressionLevel.HIGH,
-    enable_merkle=True,
-    enable_checksums=True
+    secret_key=secrets.token_bytes(32) # Clave para firmado HMAC
 )
 
-tensor = torch.randn(1024, 1024)
-desc = mneme.register("mi_tensor", tensor, target_ratio=0.1)
+# 2. Usar como gestor de contexto para limpieza automática
+with ZSpace(config) as mneme:
+    tensor = torch.randn(1024, 1024)
+    desc = mneme.register("mi_tensor", tensor, target_ratio=0.1)
 
-# Recuperar
-loaded = mneme.load("mi_tensor")
-assert torch.allclose(tensor, loaded, rtol=1e-5)
+    # Recuperar de forma segura y verificada
+    loaded = mneme.load("mi_tensor")
+    assert torch.allclose(tensor, loaded, rtol=1e-5)
 ```
 
 ### Compresión de modelos PyTorch
@@ -220,24 +240,27 @@ report = optimizer.get_optimization_report()
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        MNEME Core                               │
+│                          MNEME Core V2                          │
 ├─────────────────────────────────────────────────────────────────┤
-│  Z-Addr (Hashing)   │   Z-Gen (Synthesis)   │   Security       │
-│  Cache (LRU+)       │   Proof (Merkle)      │   Auditor        │
-│  Prefetch (Markov)  │   Optimization        │   Crypto         │
-│---------------------------------------------------------------│
-│  Motores de Descomposición: TT | CP | Tucker | SVD | Quantized  │
-│  + Compresión reversible (LZ4) + Verificación criptográfica    │
-│  + Gestión de memoria + Procesamiento paralelo                 │
+│  Z-Addr (Hashing)   │   Z-Gen (Synthesis)   │   Security (HMAC) │
+│  Cache (CPU-Aware)  │   Proof (Merkle)      │   Serializer      │
+│  Prefetch (Markov)  │   Delta Consolidation │   Crypto Engine   │
+│-----------------------------------------------------------------│
+│   Motores de Descomposición: TT | CP | Tucker | SVD | Quantized   │
+│   + Compresión (LZ4) + Firmado HMAC + Serialización Segura      │
+│   + Gestión de Memoria (CPU/GPU) + Procesamiento Paralelo       │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ### Flujo de datos mejorado
 
-- **Store** → Tensor → Analyze → Decompose → Compress → Encrypt → Descriptor
-- **Load** → Descriptor → Decrypt → Decompress → Reconstruct → Verify → Tensor
-- **Update** → Delta → Compress → Append chain → New version → Audit
-- **Security** → Verify → Audit → Monitor → Report
+**Store** → Tensor → Analyze → Decompose → Serialize → Sign (HMAC) → Compress → Descriptor
+
+**Load** → Descriptor → Decompress → Verify (HMAC) → Deserialize → Reconstruct → Verify → Tensor
+
+**Update** → Delta → Compress → Append chain → New version → Consolidate (if needed)
+
+**Security** → Verify Signature → Verify Checksum → Audit → Monitor
 
 ## 📈 Benchmarks Avanzados
 
@@ -253,7 +276,7 @@ report = optimizer.get_optimization_report()
 **ResNet-50**
 - Parámetros base: 25,557,032
 - MNEME: 2,555,703 (10x compresión)
-- Uso de memoria: –90%
+- Uso de memoria VRAM: –90%
 - Pérdida de precisión: <0.3%
 
 ### Rendimiento de Seguridad
@@ -266,32 +289,32 @@ report = optimizer.get_optimization_report()
 ## 🔬 Funcionalidades Avanzadas
 
 ### 🧠 **Núcleo Inteligente**
-- **Selección automática** de descomposición basada en propiedades del tensor
-- **Prefetching adaptativo** con aprendizaje Markov de 2do orden
-- **Gestión de memoria inteligente** con monitoreo de presión
-- **Cache optimizado** con políticas LRU adaptativas
-- **Procesamiento paralelo** para operaciones masivas
+- Selección automática de descomposición basada en propiedades del tensor
+- Prefetching adaptativo con aprendizaje Markov de 2do orden
+- Gestión de memoria CPU/GPU para preservar VRAM
+- Consolidación automática de deltas para un rendimiento sostenido
+- Procesamiento paralelo para operaciones masivas
 
 ### 🔒 **Seguridad Empresarial**
-- **Verificación criptográfica** con HMAC y checksums
-- **Árboles Merkle** para pruebas de integridad
-- **Auditoría completa** con logging detallado
-- **Control de acceso** con bloqueo de recursos
-- **Múltiples niveles** de seguridad (BASIC → MAXIMUM)
+- Verificación de autenticidad e integridad con firmado HMAC-SHA256
+- Serialización segura que previene ataques de ejecución de código
+- Árboles Merkle para pruebas de integridad de datos fragmentados
+- Arquitectura segura por defecto con generación de claves transitorias
+- Múltiples niveles de seguridad (BASIC → MAXIMUM)
 
 ### ⚡ **Optimización de Rendimiento**
-- **Profiler integrado** con métricas detalladas
-- **Gestión automática** de memoria y GC
-- **Predictor de acceso** con patrones inteligentes
-- **Optimización de tensores** con múltiples niveles
-- **Monitoreo en tiempo real** de recursos
+- Profiler integrado con métricas detalladas
+- Gestión automática de memoria y GC
+- Caché optimizado con políticas LRU y monitoreo de presión del sistema
+- Optimización de tensores con múltiples niveles
+- Monitoreo en tiempo real de recursos
 
 ### 🔗 **Integración PyTorch**
-- **Drop-in replacement** para capas estándar
-- **Compresión transparente** de modelos existentes
-- **Soporte completo** para Transformer, CNN, RNN
-- **Configuración flexible** por capa
-- **Estadísticas de rendimiento** en tiempo real
+- Drop-in replacement para capas estándar
+- Compresión transparente de modelos existentes
+- Soporte completo para Transformer, CNN, RNN
+- Configuración flexible por capa
+- Estadísticas de rendimiento en tiempo real
 
 ## 🎮 Aplicaciones
 
@@ -324,11 +347,10 @@ report = optimizer.get_optimization_report()
 ### ✅ **Fase 1 – Núcleo Completo**
 - [x] Descomposición avanzada (TT, CP, Tucker, SVD, Quantized)
 - [x] Integración completa con PyTorch
-- [x] Sistema de versiones con deltas
-- [x] Verificación criptográfica
+- [x] Sistema de versiones con deltas y consolidación
+- [x] Seguridad Robusta (HMAC + Serialización Segura)
 - [x] Árboles Merkle
-- [x] Auditoría de seguridad
-- [x] Optimización de rendimiento
+- [x] Optimización de rendimiento y memoria
 
 ### 🚧 **Fase 2 – Aceleración HW (Q2 2025)**
 - [ ] Kernels CUDA optimizados
@@ -355,12 +377,13 @@ report = optimizer.get_optimization_report()
   title = {MNEME: Motor de Memoria Neural Mórfica},
   author = {Esraderey and Raul Cruz Acosta},
   year = {2025},
-  url = https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica,
+  url = {https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica},
   note = {Sistema avanzado de memoria computacional con síntesis determinista}
 }
 ```
 
 ## 🔗 Proyectos Relacionados
+
 - **TensorLy** - Descomposición de tensores
 - **PyTorch** - Framework de deep learning
 
@@ -378,11 +401,10 @@ Business Source License 1.1 (BUSL-1.1) – ver [LICENSE](LICENSE)
 
 ## 📧 Contacto
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/mneme/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/mneme/discussions)
+- **Issues**: [GitHub Issues](https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica/discussions)
 - **Email**: msc.framework@gmail.com
-- **Documentación**: [Wiki]
-https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica
+- **Documentación**: [Wiki](https://github.com/esraderey/MNEME---Motor-de-Memoria-Neural-M-rfica/wiki)
 
 ## 🏆 Reconocimientos
 
